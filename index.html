@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Salonu Yönetim Sistemi</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 </head>
 <body>
     <header>
@@ -478,9 +479,233 @@
         </section>
 
         <section id="performance" class="page">
-            <h2>Performans Takibi</h2>
-            <!-- Performans takibi içeriği buraya gelecek -->
-            <p>Bu özellik yapım aşamasındadır...</p>
+            <div class="container">
+                <h2>Performans Takibi</h2>
+                
+                <div class="section">
+                    <h3>Yeni Performans Kaydı Ekle</h3>
+                    <form id="add-performance-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="performance-member">Üye:</label>
+                                <select id="performance-member" required>
+                                    <option value="">Üye Seçin</option>
+                                    <!-- JavaScript ile doldurulacak -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="performance-date">Tarih:</label>
+                                <input type="date" id="performance-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="performance-type">Tür:</label>
+                                <select id="performance-type">
+                                    <option value="weight">Kilo</option>
+                                    <option value="cardio">Kardiyo</option>
+                                    <option value="strength">Kuvvet</option>
+                                    <option value="body">Vücut Ölçümleri</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Kilo ölçümleri -->
+                        <div id="weight-metrics" class="metrics-container">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="current-weight">Mevcut Kilo (kg):</label>
+                                    <input type="number" id="current-weight" step="0.1" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="target-weight">Hedef Kilo (kg):</label>
+                                    <input type="number" id="target-weight" step="0.1" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="body-fat">Vücut Yağ Oranı (%):</label>
+                                    <input type="number" id="body-fat" step="0.1" min="0" max="100">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Kardiyo ölçümleri -->
+                        <div id="cardio-metrics" class="metrics-container" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cardio-type">Kardiyo Tipi:</label>
+                                    <select id="cardio-type">
+                                        <option value="running">Koşu</option>
+                                        <option value="cycling">Bisiklet</option>
+                                        <option value="swimming">Yüzme</option>
+                                        <option value="elliptical">Eliptik</option>
+                                        <option value="other">Diğer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardio-duration">Süre (dakika):</label>
+                                    <input type="number" id="cardio-duration" min="1">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cardio-distance">Mesafe (km):</label>
+                                    <input type="number" id="cardio-distance" step="0.01" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardio-calories">Yakılan Kalori:</label>
+                                    <input type="number" id="cardio-calories" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="avg-heart-rate">Ortalama Kalp Atış Hızı:</label>
+                                    <input type="number" id="avg-heart-rate" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Kuvvet ölçümleri -->
+                        <div id="strength-metrics" class="metrics-container" style="display: none;">
+                            <div id="exercise-list">
+                                <div class="exercise-item">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="exercise-name-1">Egzersiz:</label>
+                                            <input type="text" id="exercise-name-1" placeholder="Squat, Bench Press, vb.">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exercise-weight-1">Ağırlık (kg):</label>
+                                            <input type="number" id="exercise-weight-1" step="0.5" min="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exercise-reps-1">Tekrar:</label>
+                                            <input type="number" id="exercise-reps-1" min="0">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exercise-sets-1">Set:</label>
+                                            <input type="number" id="exercise-sets-1" min="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" id="add-exercise-btn" class="secondary-btn">Egzersiz Ekle</button>
+                        </div>
+                        
+                        <!-- Vücut ölçümleri -->
+                        <div id="body-metrics" class="metrics-container" style="display: none;">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="chest">Göğüs (cm):</label>
+                                    <input type="number" id="chest" step="0.1" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="waist">Bel (cm):</label>
+                                    <input type="number" id="waist" step="0.1" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hips">Kalça (cm):</label>
+                                    <input type="number" id="hips" step="0.1" min="0">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="biceps">Biceps (cm):</label>
+                                    <input type="number" id="biceps" step="0.1" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="thighs">Uyluk (cm):</label>
+                                    <input type="number" id="thighs" step="0.1" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="calves">Baldır (cm):</label>
+                                    <input type="number" id="calves" step="0.1" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="performance-notes">Notlar:</label>
+                            <textarea id="performance-notes" rows="2"></textarea>
+                        </div>
+                        <button type="submit">Performans Kaydet</button>
+                    </form>
+                </div>
+                
+                <div class="section">
+                    <h3>Performans İzleme</h3>
+                    <div class="filter-container">
+                        <div class="form-group">
+                            <label for="chart-member-filter">Üye:</label>
+                            <select id="chart-member-filter">
+                                <option value="">Üye Seçin</option>
+                                <!-- JavaScript ile doldurulacak -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="chart-metric-filter">Metrik:</label>
+                            <select id="chart-metric-filter">
+                                <option value="weight">Kilo</option>
+                                <option value="body-fat">Vücut Yağ Oranı</option>
+                                <option value="cardio-distance">Kardiyo Mesafesi</option>
+                                <option value="strength">Kuvvet Egzersizleri</option>
+                                <option value="body-measurements">Vücut Ölçüleri</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="chart-period-filter">Dönem:</label>
+                            <select id="chart-period-filter">
+                                <option value="1month">Son 1 Ay</option>
+                                <option value="3months">Son 3 Ay</option>
+                                <option value="6months">Son 6 Ay</option>
+                                <option value="1year">Son 1 Yıl</option>
+                                <option value="all">Tümü</option>
+                            </select>
+                        </div>
+                        <button id="generate-chart-btn">Grafik Oluştur</button>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="performance-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Performans Geçmişi</h3>
+                    <div class="filter-controls">
+                        <div class="search-container">
+                            <input type="text" id="performance-search" placeholder="Ara...">
+                        </div>
+                        <div class="filter-group">
+                            <label for="performance-member-filter">Üye:</label>
+                            <select id="performance-member-filter">
+                                <option value="">Tümü</option>
+                                <!-- JavaScript ile doldurulacak -->
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="performance-type-filter">Tür:</label>
+                            <select id="performance-type-filter">
+                                <option value="">Tümü</option>
+                                <option value="weight">Kilo</option>
+                                <option value="cardio">Kardiyo</option>
+                                <option value="strength">Kuvvet</option>
+                                <option value="body">Vücut Ölçümleri</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table id="performance-table">
+                            <thead>
+                                <tr>
+                                    <th>Üye</th>
+                                    <th>Tarih</th>
+                                    <th>Tür</th>
+                                    <th>Özet</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JavaScript ile doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 

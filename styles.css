@@ -611,4 +611,134 @@ tr.inactive {
 .filter-container .select-container {
     display: flex;
     align-items: center;
+}
+
+/* Ekipman Takibi Stilleri */
+.maintenance-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.upcoming-maintenance {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    padding: 15px;
+}
+
+.maintenance-history {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    padding: 15px;
+}
+
+.add-maintenance {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.upcoming-maintenance-item {
+    background-color: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.upcoming-maintenance-item.urgent {
+    border-left-color: #e74c3c;
+}
+
+.upcoming-maintenance-item h5 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+}
+
+.upcoming-maintenance-item p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.upcoming-maintenance-item .date {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.upcoming-maintenance-item.urgent .date {
+    color: #e74c3c;
+}
+
+.equipment-status {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.equipment-status.active {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #27ae60;
+}
+
+.equipment-status.maintenance {
+    background-color: rgba(241, 196, 15, 0.2);
+    color: #f39c12;
+}
+
+.equipment-status.broken {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.equipment-status.retired {
+    background-color: rgba(149, 165, 166, 0.2);
+    color: #7f8c8d;
+}
+
+.maintenance-type {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.maintenance-type.routine {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: #2980b9;
+}
+
+.maintenance-type.repair {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.maintenance-type.parts {
+    background-color: rgba(155, 89, 182, 0.2);
+    color: #8e44ad;
+}
+
+.maintenance-type.inspection {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #27ae60;
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Duyarlı tasarım için ekipman takip sayfası düzenlemeleri */
+@media (max-width: 768px) {
+    .maintenance-container {
+        grid-template-columns: 1fr;
+    }
 } 

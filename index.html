@@ -297,9 +297,184 @@
         </section>
 
         <section id="equipment" class="page">
-            <h2>Ekipman Takibi</h2>
-            <!-- Ekipman takibi içeriği buraya gelecek -->
-            <p>Bu özellik yapım aşamasındadır...</p>
+            <div class="container">
+                <h2>Ekipman Takibi</h2>
+                <div class="section">
+                    <h3>Yeni Ekipman Ekle</h3>
+                    <form id="add-equipment-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="equipment-name">Ekipman Adı:</label>
+                                <input type="text" id="equipment-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="equipment-type">Ekipman Tipi:</label>
+                                <select id="equipment-type">
+                                    <option value="cardio">Kardiyo</option>
+                                    <option value="strength">Güç</option>
+                                    <option value="flexibility">Esneklik</option>
+                                    <option value="accessory">Aksesuar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="equipment-location">Konum:</label>
+                                <input type="text" id="equipment-location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="equipment-purchase-date">Satın Alma Tarihi:</label>
+                                <input type="date" id="equipment-purchase-date" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="equipment-price">Fiyat (TL):</label>
+                                <input type="number" id="equipment-price" min="0" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="equipment-status">Durum:</label>
+                                <select id="equipment-status">
+                                    <option value="active">Aktif</option>
+                                    <option value="maintenance">Bakımda</option>
+                                    <option value="broken">Arızalı</option>
+                                    <option value="retired">Emekli</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="equipment-notes">Notlar:</label>
+                            <textarea id="equipment-notes" rows="2"></textarea>
+                        </div>
+                        <button type="submit">Ekipman Ekle</button>
+                    </form>
+                </div>
+                
+                <div class="section">
+                    <h3>Ekipman Listesi</h3>
+                    <div class="filter-controls">
+                        <div class="search-container">
+                            <input type="text" id="equipment-search" placeholder="Ekipman ara...">
+                        </div>
+                        <div class="filter-group">
+                            <label for="equipment-filter">Filtrele:</label>
+                            <select id="equipment-filter">
+                                <option value="">Tümü</option>
+                                <option value="active">Aktif</option>
+                                <option value="maintenance">Bakımda</option>
+                                <option value="broken">Arızalı</option>
+                                <option value="retired">Emekli</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table id="equipment-table">
+                            <thead>
+                                <tr>
+                                    <th>Ekipman Adı</th>
+                                    <th>Tipi</th>
+                                    <th>Konum</th>
+                                    <th>Satın Alma Tarihi</th>
+                                    <th>Durum</th>
+                                    <th>Fiyat</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JavaScript ile doldurulacak -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h3>Bakım Takibi</h3>
+                    <div class="maintenance-container">
+                        <div class="upcoming-maintenance">
+                            <h4>Yaklaşan Bakımlar</h4>
+                            <div id="upcoming-maintenance-list">
+                                <!-- JavaScript ile doldurulacak -->
+                            </div>
+                        </div>
+                        <div class="maintenance-history">
+                            <h4>Bakım Geçmişi</h4>
+                            <div class="filter-group">
+                                <label for="maintenance-equipment-filter">Ekipman:</label>
+                                <select id="maintenance-equipment-filter">
+                                    <option value="">Tümü</option>
+                                    <!-- JavaScript ile doldurulacak -->
+                                </select>
+                            </div>
+                            <div class="table-container">
+                                <table id="maintenance-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ekipman</th>
+                                            <th>Bakım Tarihi</th>
+                                            <th>Tür</th>
+                                            <th>Maliyeti</th>
+                                            <th>Teknisyen</th>
+                                            <th>Notlar</th>
+                                            <th>İşlemler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- JavaScript ile doldurulacak -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-maintenance">
+                        <h4>Yeni Bakım Kaydı Ekle</h4>
+                        <form id="add-maintenance-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="maintenance-equipment">Ekipman:</label>
+                                    <select id="maintenance-equipment" required>
+                                        <option value="">Ekipman Seçin</option>
+                                        <!-- JavaScript ile doldurulacak -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maintenance-date">Bakım Tarihi:</label>
+                                    <input type="date" id="maintenance-date" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="maintenance-type">Bakım Türü:</label>
+                                    <select id="maintenance-type">
+                                        <option value="routine">Rutin Bakım</option>
+                                        <option value="repair">Onarım</option>
+                                        <option value="parts">Parça Değişimi</option>
+                                        <option value="inspection">Kontrol</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maintenance-cost">Maliyet (TL):</label>
+                                    <input type="number" id="maintenance-cost" min="0" step="0.01">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="maintenance-technician">Teknisyen:</label>
+                                    <input type="text" id="maintenance-technician">
+                                </div>
+                                <div class="form-group">
+                                    <label for="next-maintenance-date">Sonraki Bakım Tarihi:</label>
+                                    <input type="date" id="next-maintenance-date">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="maintenance-notes">Notlar:</label>
+                                <textarea id="maintenance-notes" rows="2"></textarea>
+                            </div>
+                            <button type="submit">Bakım Kaydı Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="performance" class="page">

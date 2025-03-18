@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigasyon Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        nav {
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-right: 10px;
+        }
+        
+        nav a {
+            padding: 5px 10px;
+            background-color: #eee;
+            text-decoration: none;
+            color: black;
+        }
+        
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .page {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" data-page="page1" class="active">Sayfa 1</a></li>
+            <li><a href="#" data-page="page2">Sayfa 2</a></li>
+            <li><a href="#" data-page="page3">Sayfa 3</a></li>
+        </ul>
+    </nav>
+    
+    <div id="page1" class="page active">
+        <h2>Sayfa 1 İçeriği</h2>
+        <p>Bu birinci sayfa.</p>
+    </div>
+    
+    <div id="page2" class="page">
+        <h2>Sayfa 2 İçeriği</h2>
+        <p>Bu ikinci sayfa.</p>
+    </div>
+    
+    <div id="page3" class="page">
+        <h2>Sayfa 3 İçeriği</h2>
+        <p>Bu üçüncü sayfa.</p>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('nav a');
+            const pages = document.querySelectorAll('.page');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Aktif sayfa ve link sınıflarını kaldır
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    pages.forEach(p => p.classList.remove('active'));
+                    
+                    // Tıklanan linki aktif yap
+                    this.classList.add('active');
+                    
+                    // İlgili sayfayı göster
+                    const pageId = this.getAttribute('data-page');
+                    const targetPage = document.getElementById(pageId);
+                    if (targetPage) {
+                        targetPage.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

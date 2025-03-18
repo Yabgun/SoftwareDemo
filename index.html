@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Salonu Yönetim Sistemi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Fitness Salonu Yönetim Sistemi</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-page="membership" class="active">Üyelik Yönetimi</a></li>
+                <li><a href="#" data-page="trainer">Eğitmen Yönetimi</a></li>
+                <li><a href="#" data-page="program">Ders/Program Yönetimi</a></li>
+                <li><a href="#" data-page="equipment">Ekipman Takibi</a></li>
+                <li><a href="#" data-page="performance">Performans Takibi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="membership" class="page active">
+            <h2>Üyelik Yönetimi</h2>
+            <div class="card">
+                <h3>Yeni Üye Ekle</h3>
+                <form id="add-member-form">
+                    <div class="form-group">
+                        <label for="member-name">Ad Soyad:</label>
+                        <input type="text" id="member-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-email">E-posta:</label>
+                        <input type="email" id="member-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="member-phone">Telefon:</label>
+                        <input type="tel" id="member-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="membership-type">Üyelik Tipi:</label>
+                        <select id="membership-type">
+                            <option value="standard">Standart</option>
+                            <option value="premium">Premium</option>
+                            <option value="vip">VIP</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="membership-start">Başlangıç Tarihi:</label>
+                        <input type="date" id="membership-start" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="membership-end">Bitiş Tarihi:</label>
+                        <input type="date" id="membership-end" required>
+                    </div>
+                    <button type="submit">Üye Ekle</button>
+                </form>
+            </div>
+            
+            <div class="card">
+                <h3>Üye Listesi</h3>
+                <div class="search-container">
+                    <input type="text" id="member-search" placeholder="Üye ara...">
+                </div>
+                <table id="members-table">
+                    <thead>
+                        <tr>
+                            <th>Ad Soyad</th>
+                            <th>E-posta</th>
+                            <th>Telefon</th>
+                            <th>Üyelik Tipi</th>
+                            <th>Başlangıç</th>
+                            <th>Bitiş</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- JavaScript ile doldurulacak -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="trainer" class="page">
+            <h2>Eğitmen Yönetimi</h2>
+            <div class="card">
+                <h3>Yeni Eğitmen Ekle</h3>
+                <form id="add-trainer-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trainer-name">Ad Soyad:</label>
+                            <input type="text" id="trainer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainer-email">E-posta:</label>
+                            <input type="email" id="trainer-email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trainer-phone">Telefon:</label>
+                            <input type="tel" id="trainer-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainer-rate">Saatlik Ücret (₺):</label>
+                            <input type="number" id="trainer-rate" min="0" value="0" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="trainer-bio">Biyografi:</label>
+                        <textarea id="trainer-bio" rows="3" placeholder="Eğitmen hakkında kısa bilgi..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Uzmanlık Alanları:</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="spec-fitness" name="trainer-specialization" value="Fitness">
+                                <label for="spec-fitness">Fitness</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="spec-yoga" name="trainer-specialization" value="Yoga">
+                                <label for="spec-yoga">Yoga</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="spec-pilates" name="trainer-specialization" value="Pilates">
+                                <label for="spec-pilates">Pilates</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="spec-kickbox" name="trainer-specialization" value="Kickbox">
+                                <label for="spec-kickbox">Kickbox</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="spec-zumba" name="trainer-specialization" value="Zumba">
+                                <label for="spec-zumba">Zumba</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="spec-spinning" name="trainer-specialization" value="Spinning">
+                                <label for="spec-spinning">Spinning</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="spec-beslenme" name="trainer-specialization" value="Beslenme">
+                                <label for="spec-beslenme">Beslenme</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit">Eğitmen Ekle</button>
+                </form>
+            </div>
+            
+            <div class="card">
+                <h3>Eğitmen Listesi</h3>
+                <div class="filter-container">
+                    <div class="search-container">
+                        <input type="text" id="trainer-search" placeholder="Eğitmen ara...">
+                    </div>
+                    <div class="select-container">
+                        <select id="trainer-specialization-filter">
+                            <option value="">Tüm Uzmanlıklar</option>
+                            <!-- JavaScript ile doldurulacak -->
+                        </select>
+                    </div>
+                </div>
+                <table id="trainers-table">
+                    <thead>
+                        <tr>
+                            <th>Ad Soyad</th>
+                            <th>E-posta</th>
+                            <th>Telefon</th>
+                            <th>Uzmanlık Alanları</th>
+                            <th>Saatlik Ücret</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- JavaScript ile doldurulacak -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="program" class="page">
+            <h2>Ders/Program Yönetimi</h2>
+            <div class="card">
+                <h3>Yeni Ders Ekle</h3>
+                <form id="add-class-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="class-name">Ders Adı:</label>
+                            <input type="text" id="class-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="class-type">Ders Tipi:</label>
+                            <select id="class-type">
+                                <option value="group">Grup Dersi</option>
+                                <option value="personal">Kişisel Antrenman</option>
+                                <option value="workshop">Workshop</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="class-trainer">Sorumlu Eğitmen:</label>
+                            <select id="class-trainer">
+                                <option value="">Eğitmen Seçin</option>
+                                <!-- JavaScript ile doldurulacak -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="class-capacity">Kapasite:</label>
+                            <input type="number" id="class-capacity" min="1" value="10" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="class-date">Tarih:</label>
+                            <input type="date" id="class-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="class-time">Saat:</label>
+                            <input type="time" id="class-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="class-duration">Süre (dakika):</label>
+                            <input type="number" id="class-duration" min="15" step="15" value="60" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-description">Açıklama:</label>
+                        <textarea id="class-description" rows="3" placeholder="Ders hakkında detaylı bilgi..."></textarea>
+                    </div>
+                    <button type="submit">Ders Ekle</button>
+                </form>
+            </div>
+            
+            <div class="card">
+                <h3>Haftalık Program</h3>
+                <div class="filter-container">
+                    <div class="select-container">
+                        <label for="week-selector">Hafta:</label>
+                        <select id="week-selector">
+                            <!-- JavaScript ile hafta seçenekleri doldurulacak -->
+                        </select>
+                    </div>
+                    <div class="select-container">
+                        <label for="class-type-filter">Ders Tipi:</label>
+                        <select id="class-type-filter">
+                            <option value="">Tümü</option>
+                            <option value="group">Grup Dersleri</option>
+                            <option value="personal">Kişisel Antrenman</option>
+                            <option value="workshop">Workshop</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="weekly-schedule">
+                    <div class="schedule-header">
+                        <div class="time-col">Saat</div>
+                        <div class="day-col">Pazartesi</div>
+                        <div class="day-col">Salı</div>
+                        <div class="day-col">Çarşamba</div>
+                        <div class="day-col">Perşembe</div>
+                        <div class="day-col">Cuma</div>
+                        <div class="day-col">Cumartesi</div>
+                        <div class="day-col">Pazar</div>
+                    </div>
+                    <div class="schedule-body" id="weekly-schedule-container">
+                        <!-- JavaScript ile doldurulacak -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Ders Listesi</h3>
+                <div class="search-container">
+                    <input type="text" id="class-search" placeholder="Ders ara...">
+                </div>
+                <table id="classes-table">
+                    <thead>
+                        <tr>
+                            <th>Ders Adı</th>
+                            <th>Tipi</th>
+                            <th>Eğitmen</th>
+                            <th>Tarih</th>
+                            <th>Saat</th>
+                            <th>Süre</th>
+                            <th>Kapasite</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- JavaScript ile doldurulacak -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="equipment" class="page">
+            <h2>Ekipman Takibi</h2>
+            <!-- Ekipman takibi içeriği buraya gelecek -->
+            <p>Bu özellik yapım aşamasındadır...</p>
+        </section>
+
+        <section id="performance" class="page">
+            <h2>Performans Takibi</h2>
+            <!-- Performans takibi içeriği buraya gelecek -->
+            <p>Bu özellik yapım aşamasındadır...</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Fitness Salonu Yönetim Sistemi</p>
+    </footer>
+
+    <script>
+        // Temel navigasyon kodu
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigasyon işlevi
+            function setupNavigation() {
+                const navLinks = document.querySelectorAll('nav a');
+                const pages = document.querySelectorAll('.page');
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Aktif sayfa ve link sınıflarını kaldır
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        pages.forEach(p => p.classList.remove('active'));
+                        
+                        // Tıklanan linki aktif yap
+                        this.classList.add('active');
+                        
+                        // İlgili sayfayı göster
+                        const pageId = this.getAttribute('data-page');
+                        const targetPage = document.getElementById(pageId);
+                        if (targetPage) {
+                            targetPage.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            // Temel localStorage işlemleri
+            const memberStorageKey = 'gym_members';
+            const trainerStorageKey = 'gym_trainers';
+            
+            // Üyelik formu
+            const memberForm = document.getElementById('add-member-form');
+            if (memberForm) {
+                memberForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Form değerlerini al
+                    const memberData = {
+                        id: Date.now().toString(36) + Math.random().toString(36).substring(2),
+                        name: document.getElementById('member-name').value,
+                        email: document.getElementById('member-email').value,
+                        phone: document.getElementById('member-phone').value,
+                        membershipType: document.getElementById('membership-type').value,
+                        startDate: document.getElementById('membership-start').value,
+                        endDate: document.getElementById('membership-end').value,
+                        createdAt: new Date()
+                    };
+                    
+                    // LocalStorage'a kaydet
+                    const members = JSON.parse(localStorage.getItem(memberStorageKey) || '[]');
+                    members.push(memberData);
+                    localStorage.setItem(memberStorageKey, JSON.stringify(members));
+                    
+                    // Formu temizle
+                    this.reset();
+                    
+                    // Bildirim göster
+                    showNotification('Üye başarıyla eklendi', 'success');
+                    
+                    // Üye listesini güncelle
+                    loadMembers();
+                });
+            }
+            
+            // Eğitmen formu
+            const trainerForm = document.getElementById('add-trainer-form');
+            if (trainerForm) {
+                trainerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Uzmanlık alanlarını al
+                    const specializationInputs = document.querySelectorAll('input[name="trainer-specialization"]:checked');
+                    const specializations = Array.from(specializationInputs).map(input => input.value);
+                    
+                    // Form değerlerini al
+                    const trainerData = {
+                        id: 'tr_' + Date.now().toString(36) + Math.random().toString(36).substring(2),
+                        name: document.getElementById('trainer-name').value,
+                        email: document.getElementById('trainer-email').value,
+                        phone: document.getElementById('trainer-phone').value,
+                        hourlyRate: document.getElementById('trainer-rate').value,
+                        bio: document.getElementById('trainer-bio').value,
+                        specializations: specializations,
+                        isActive: true,
+                        createdAt: new Date()
+                    };
+                    
+                    // LocalStorage'a kaydet
+                    const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                    trainers.push(trainerData);
+                    localStorage.setItem(trainerStorageKey, JSON.stringify(trainers));
+                    
+                    // Formu temizle
+                    this.reset();
+                    
+                    // Bildirim göster
+                    showNotification('Eğitmen başarıyla eklendi', 'success');
+                    
+                    // Eğitmen listesini güncelle
+                    loadTrainers();
+                });
+            }
+            
+            // Üyeleri yükle
+            function loadMembers() {
+                const membersTable = document.querySelector('#members-table tbody');
+                if (!membersTable) return;
+                
+                membersTable.innerHTML = '';
+                
+                const members = JSON.parse(localStorage.getItem(memberStorageKey) || '[]');
+                
+                if (members.length === 0) {
+                    membersTable.innerHTML = '<tr><td colspan="7" class="text-center">Kayıtlı üye bulunamadı</td></tr>';
+                    return;
+                }
+                
+                members.forEach(member => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${member.name}</td>
+                        <td>${member.email}</td>
+                        <td>${member.phone}</td>
+                        <td>${formatMembershipType(member.membershipType)}</td>
+                        <td>${member.startDate}</td>
+                        <td>${member.endDate}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="edit-btn" data-id="${member.id}">Düzenle</button>
+                                <button class="delete-btn" data-id="${member.id}">Sil</button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    membersTable.appendChild(row);
+                });
+                
+                // Silme butonları için event listener'lar
+                document.querySelectorAll('#members-table .delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        if (confirm('Bu üyeyi silmek istediğinize emin misiniz?')) {
+                            deleteMember(id);
+                        }
+                    });
+                });
+            }
+            
+            // Eğitmenleri yükle
+            function loadTrainers() {
+                const trainersTable = document.querySelector('#trainers-table tbody');
+                if (!trainersTable) return;
+                
+                trainersTable.innerHTML = '';
+                
+                const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                
+                if (trainers.length === 0) {
+                    trainersTable.innerHTML = '<tr><td colspan="7" class="text-center">Kayıtlı eğitmen bulunamadı</td></tr>';
+                    return;
+                }
+                
+                trainers.forEach(trainer => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${trainer.name}</td>
+                        <td>${trainer.email}</td>
+                        <td>${trainer.phone}</td>
+                        <td>${formatSpecializations(trainer.specializations)}</td>
+                        <td>${trainer.hourlyRate} ₺</td>
+                        <td>${trainer.isActive ? 'Aktif' : 'Pasif'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="edit-btn" data-id="${trainer.id}">Düzenle</button>
+                                <button class="delete-btn" data-id="${trainer.id}">Sil</button>
+                                <button class="availability-btn" data-id="${trainer.id}">Müsaitlik</button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    trainersTable.appendChild(row);
+                });
+                
+                // Silme butonları için event listener'lar
+                document.querySelectorAll('#trainers-table .delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        if (confirm('Bu eğitmeni silmek istediğinize emin misiniz?')) {
+                            deleteTrainer(id);
+                        }
+                    });
+                });
+            }
+            
+            // Üye silme
+            function deleteMember(id) {
+                let members = JSON.parse(localStorage.getItem(memberStorageKey) || '[]');
+                members = members.filter(member => member.id !== id);
+                localStorage.setItem(memberStorageKey, JSON.stringify(members));
+                
+                loadMembers();
+                showNotification('Üye başarıyla silindi', 'success');
+            }
+            
+            // Eğitmen silme
+            function deleteTrainer(id) {
+                let trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                trainers = trainers.filter(trainer => trainer.id !== id);
+                localStorage.setItem(trainerStorageKey, JSON.stringify(trainers));
+                
+                loadTrainers();
+                showNotification('Eğitmen başarıyla silindi', 'success');
+            }
+            
+            // Yardımcı fonksiyonlar
+            function formatMembershipType(type) {
+                const types = {
+                    'standard': 'Standart',
+                    'premium': 'Premium',
+                    'vip': 'VIP'
+                };
+                return types[type] || type;
+            }
+            
+            function formatSpecializations(specializations) {
+                if (!specializations || specializations.length === 0) {
+                    return '-';
+                }
+                return specializations.join(', ');
+            }
+            
+            // Bildirim göster
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                // Gösterimi için biraz gecikme ekleyin (CSS transition için)
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                // 3 saniye sonra bildirim kapat
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    
+                    // CSS transition'ın tamamlanmasını bekleyin
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+            
+            // Üye arama
+            const memberSearch = document.getElementById('member-search');
+            if (memberSearch) {
+                memberSearch.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const members = JSON.parse(localStorage.getItem(memberStorageKey) || '[]');
+                    
+                    if (!searchTerm) {
+                        loadMembers();
+                        return;
+                    }
+                    
+                    const filteredMembers = members.filter(member => {
+                        return (
+                            member.name.toLowerCase().includes(searchTerm) ||
+                            member.email.toLowerCase().includes(searchTerm) ||
+                            member.phone.includes(searchTerm)
+                        );
+                    });
+                    
+                    renderMembersTable(filteredMembers);
+                });
+            }
+            
+            // Eğitmen arama
+            const trainerSearch = document.getElementById('trainer-search');
+            if (trainerSearch) {
+                trainerSearch.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                    
+                    if (!searchTerm) {
+                        loadTrainers();
+                        return;
+                    }
+                    
+                    const filteredTrainers = trainers.filter(trainer => {
+                        return (
+                            trainer.name.toLowerCase().includes(searchTerm) ||
+                            trainer.email.toLowerCase().includes(searchTerm) ||
+                            trainer.phone.includes(searchTerm)
+                        );
+                    });
+                    
+                    renderTrainersTable(filteredTrainers);
+                });
+            }
+            
+            // Üyeleri tabloya render et
+            function renderMembersTable(members) {
+                const membersTable = document.querySelector('#members-table tbody');
+                if (!membersTable) return;
+                
+                membersTable.innerHTML = '';
+                
+                if (members.length === 0) {
+                    membersTable.innerHTML = '<tr><td colspan="7" class="text-center">Kayıtlı üye bulunamadı</td></tr>';
+                    return;
+                }
+                
+                members.forEach(member => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${member.name}</td>
+                        <td>${member.email}</td>
+                        <td>${member.phone}</td>
+                        <td>${formatMembershipType(member.membershipType)}</td>
+                        <td>${member.startDate}</td>
+                        <td>${member.endDate}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="edit-btn" data-id="${member.id}">Düzenle</button>
+                                <button class="delete-btn" data-id="${member.id}">Sil</button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    membersTable.appendChild(row);
+                });
+                
+                // Silme butonları için event listener'lar
+                document.querySelectorAll('#members-table .delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        if (confirm('Bu üyeyi silmek istediğinize emin misiniz?')) {
+                            deleteMember(id);
+                        }
+                    });
+                });
+            }
+            
+            // Eğitmenleri tabloya render et
+            function renderTrainersTable(trainers) {
+                const trainersTable = document.querySelector('#trainers-table tbody');
+                if (!trainersTable) return;
+                
+                trainersTable.innerHTML = '';
+                
+                if (trainers.length === 0) {
+                    trainersTable.innerHTML = '<tr><td colspan="7" class="text-center">Kayıtlı eğitmen bulunamadı</td></tr>';
+                    return;
+                }
+                
+                trainers.forEach(trainer => {
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${trainer.name}</td>
+                        <td>${trainer.email}</td>
+                        <td>${trainer.phone}</td>
+                        <td>${formatSpecializations(trainer.specializations)}</td>
+                        <td>${trainer.hourlyRate} ₺</td>
+                        <td>${trainer.isActive ? 'Aktif' : 'Pasif'}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="edit-btn" data-id="${trainer.id}">Düzenle</button>
+                                <button class="delete-btn" data-id="${trainer.id}">Sil</button>
+                                <button class="availability-btn" data-id="${trainer.id}">Müsaitlik</button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    trainersTable.appendChild(row);
+                });
+                
+                // Silme butonları için event listener'lar
+                document.querySelectorAll('#trainers-table .delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        if (confirm('Bu eğitmeni silmek istediğinize emin misiniz?')) {
+                            deleteTrainer(id);
+                        }
+                    });
+                });
+            }
+            
+            // Uygulamayı başlat
+            setupNavigation();
+            loadMembers();
+            loadTrainers();
+
+            // Ders/Program Yönetimi için değişkenler ve fonksiyonlar
+            const classStorageKey = 'gym_classes';
+            
+            // Haftanın başlangıç ve bitiş tarihlerini hesaplama
+            function getWeekDates(date = new Date()) {
+                const day = date.getDay(); // 0 = Pazar, 1 = Pazartesi, ...
+                const diff = date.getDate() - day + (day === 0 ? -6 : 1); // Pazartesi gününe ayarla
+                
+                const monday = new Date(date);
+                monday.setDate(diff);
+                monday.setHours(0, 0, 0, 0);
+                
+                const sunday = new Date(monday);
+                sunday.setDate(monday.getDate() + 6);
+                sunday.setHours(23, 59, 59, 999);
+                
+                return { start: monday, end: sunday };
+            }
+            
+            // Tarih formatlamak için yardımcı fonksiyon
+            function formatDate(date) {
+                const d = new Date(date);
+                const day = d.getDate().toString().padStart(2, '0');
+                const month = (d.getMonth() + 1).toString().padStart(2, '0');
+                const year = d.getFullYear();
+                
+                return `${day}.${month}.${year}`;
+            }
+            
+            // Saat formatlamak için yardımcı fonksiyon
+            function formatTime(time) {
+                return time.substring(0, 5); // "HH:MM" formatına dönüştür
+            }
+            
+            // Ders tipini formatla
+            function formatClassType(type) {
+                const types = {
+                    'group': 'Grup Dersi',
+                    'personal': 'Kişisel Antrenman',
+                    'workshop': 'Workshop'
+                };
+                return types[type] || type;
+            }
+            
+            // Hafta seçici için hafta seçeneklerini oluştur
+            function populateWeekSelector() {
+                const weekSelector = document.getElementById('week-selector');
+                if (!weekSelector) return;
+                
+                weekSelector.innerHTML = '';
+                
+                // Mevcut hafta ve sonraki 4 hafta
+                const today = new Date();
+                
+                for (let i = 0; i < 5; i++) {
+                    const weekStart = new Date(today);
+                    weekStart.setDate(today.getDate() + (i * 7));
+                    
+                    const { start, end } = getWeekDates(weekStart);
+                    
+                    const option = document.createElement('option');
+                    option.value = start.toISOString();
+                    option.textContent = `${formatDate(start)} - ${formatDate(end)}`;
+                    
+                    if (i === 0) {
+                        option.selected = true;
+                    }
+                    
+                    weekSelector.appendChild(option);
+                }
+                
+                // Hafta değiştiğinde programı güncelle
+                weekSelector.addEventListener('change', loadWeeklySchedule);
+            }
+            
+            // Eğitmen seçicisini doldur
+            function populateTrainerSelector() {
+                const trainerSelector = document.getElementById('class-trainer');
+                if (!trainerSelector) return;
+                
+                const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                
+                // Sadece aktif eğitmenleri göster
+                const activeTrainers = trainers.filter(trainer => trainer.isActive);
+                
+                activeTrainers.forEach(trainer => {
+                    const option = document.createElement('option');
+                    option.value = trainer.id;
+                    option.textContent = trainer.name;
+                    trainerSelector.appendChild(option);
+                });
+            }
+            
+            // Ders tipine göre filtrele
+            function handleClassTypeFilter() {
+                const classTypeFilter = document.getElementById('class-type-filter');
+                if (!classTypeFilter) return;
+                
+                classTypeFilter.addEventListener('change', loadWeeklySchedule);
+            }
+            
+            // Haftalık programı yükle
+            function loadWeeklySchedule() {
+                const weekSelector = document.getElementById('week-selector');
+                const classTypeFilter = document.getElementById('class-type-filter');
+                const scheduleContainer = document.getElementById('weekly-schedule-container');
+                
+                if (!weekSelector || !scheduleContainer) return;
+                
+                const selectedWeekStart = new Date(weekSelector.value);
+                const selectedType = classTypeFilter ? classTypeFilter.value : '';
+                
+                const { start: weekStart, end: weekEnd } = getWeekDates(selectedWeekStart);
+                
+                // Tüm dersleri yükle
+                const classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                
+                // Bu haftaya ait dersler
+                const weekClasses = classes.filter(cls => {
+                    const classDate = new Date(cls.date);
+                    return classDate >= weekStart && classDate <= weekEnd && (selectedType === '' || cls.type === selectedType);
+                });
+                
+                // Zaman dilimleri oluştur (8:00 - 22:00 arası)
+                scheduleContainer.innerHTML = '';
+                
+                // Gün başlıklarını oluştur
+                const headerRow = document.createElement('div');
+                headerRow.className = 'schedule-header';
+                
+                // Zaman sütunu başlığı
+                const timeHeader = document.createElement('div');
+                timeHeader.className = 'time-col';
+                timeHeader.textContent = 'Saat';
+                headerRow.appendChild(timeHeader);
+                
+                // Gün başlıkları
+                const weekdays = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
+                for (let day = 0; day < 7; day++) {
+                    const date = new Date(weekStart);
+                    date.setDate(date.getDate() + day);
+                    
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'day-col';
+                    dayHeader.innerHTML = `
+                        <div>${weekdays[day]}</div>
+                        <div class="schedule-date">${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}</div>
+                    `;
+                    headerRow.appendChild(dayHeader);
+                }
+                
+                scheduleContainer.appendChild(headerRow);
+                
+                // Program içeriği için bir kapsayıcı
+                const scheduleBody = document.createElement('div');
+                scheduleBody.className = 'schedule-body';
+                scheduleContainer.appendChild(scheduleBody);
+                
+                for (let hour = 8; hour < 22; hour++) {
+                    const timeLabel = `${hour.toString().padStart(2, '0')}:00`;
+                    
+                    const row = document.createElement('div');
+                    row.className = 'schedule-row';
+                    
+                    // Zaman dilimi
+                    const timeSlot = document.createElement('div');
+                    timeSlot.className = 'time-slot';
+                    timeSlot.textContent = timeLabel;
+                    row.appendChild(timeSlot);
+                    
+                    // Her gün için bir kutu
+                    for (let day = 0; day < 7; day++) {
+                        const dayDate = new Date(weekStart);
+                        dayDate.setDate(weekStart.getDate() + day);
+                        
+                        const daySlot = document.createElement('div');
+                        daySlot.className = 'day-slot';
+                        daySlot.dataset.date = dayDate.toISOString().split('T')[0];
+                        daySlot.dataset.hour = hour;
+                        
+                        // Bu zaman dilimine ait dersleri bul
+                        const dayClasses = weekClasses.filter(cls => {
+                            const classDate = new Date(cls.date);
+                            const classHour = parseInt(cls.time.split(':')[0]);
+                            return classDate.getDate() === dayDate.getDate() && 
+                                   classDate.getMonth() === dayDate.getMonth() && 
+                                   classDate.getFullYear() === dayDate.getFullYear() && 
+                                   classHour === hour;
+                        });
+                        
+                        // Dersleri ekle
+                        dayClasses.forEach(cls => {
+                            const classItem = document.createElement('div');
+                            classItem.className = `class-item ${cls.type}`;
+                            classItem.dataset.id = cls.id;
+                            
+                            const trainer = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]')
+                                .find(trainer => trainer.id === cls.trainerId);
+                            
+                            classItem.innerHTML = `
+                                <div class="class-title">${cls.name}</div>
+                                <div class="class-trainer">${trainer ? trainer.name : 'Eğitmen Yok'}</div>
+                                <div class="class-time">${formatTime(cls.time)}</div>
+                                <div class="class-capacity">${cls.currentAttendees || 0}/${cls.capacity}</div>
+                            `;
+                            
+                            // Derse tıklandığında detayları göster
+                            classItem.addEventListener('click', () => showClassDetails(cls.id));
+                            
+                            daySlot.appendChild(classItem);
+                        });
+                        
+                        row.appendChild(daySlot);
+                    }
+                    
+                    scheduleBody.appendChild(row);
+                }
+            }
+            
+            // Ders detaylarını göster
+            function showClassDetails(classId) {
+                const classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                const cls = classes.find(c => c.id === classId);
+                
+                if (!cls) return;
+                
+                const trainer = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]')
+                    .find(trainer => trainer.id === cls.trainerId);
+                
+                // Modal oluştur
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>${cls.name}</h3>
+                        <p><strong>Tip:</strong> ${formatClassType(cls.type)}</p>
+                        <p><strong>Eğitmen:</strong> ${trainer ? trainer.name : 'Eğitmen Yok'}</p>
+                        <p><strong>Tarih:</strong> ${formatDate(cls.date)}</p>
+                        <p><strong>Saat:</strong> ${formatTime(cls.time)}</p>
+                        <p><strong>Süre:</strong> ${cls.duration} dakika</p>
+                        <p><strong>Kapasite:</strong> ${cls.currentAttendees || 0}/${cls.capacity}</p>
+                        ${cls.description ? `<p><strong>Açıklama:</strong> ${cls.description}</p>` : ''}
+                        
+                        <div class="button-group">
+                            <button class="edit-btn" data-id="${cls.id}">Düzenle</button>
+                            <button class="delete-btn" data-id="${cls.id}">Sil</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Modal kapatma
+                const closeModal = () => {
+                    document.body.removeChild(modal);
+                };
+                
+                modal.querySelector('.close').addEventListener('click', closeModal);
+                
+                // Modal dışına tıklama
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+                
+                // Düzenleme butonuna tıklama
+                modal.querySelector('.edit-btn').addEventListener('click', function() {
+                    closeModal();
+                    editClass(classId);
+                });
+                
+                // Silme butonuna tıklama
+                modal.querySelector('.delete-btn').addEventListener('click', function() {
+                    if (confirm('Bu dersi silmek istediğinize emin misiniz?')) {
+                        deleteClass(classId);
+                        closeModal();
+                    }
+                });
+            }
+            
+            // Dersi düzenle
+            function editClass(classId) {
+                const classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                const cls = classes.find(c => c.id === classId);
+                
+                if (!cls) return;
+                
+                // Modal oluştur
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Dersi Düzenle</h3>
+                        <form id="edit-class-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-class-name">Ders Adı:</label>
+                                    <input type="text" id="edit-class-name" value="${cls.name}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-class-type">Ders Tipi:</label>
+                                    <select id="edit-class-type">
+                                        <option value="group" ${cls.type === 'group' ? 'selected' : ''}>Grup Dersi</option>
+                                        <option value="personal" ${cls.type === 'personal' ? 'selected' : ''}>Kişisel Antrenman</option>
+                                        <option value="workshop" ${cls.type === 'workshop' ? 'selected' : ''}>Workshop</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-class-trainer">Sorumlu Eğitmen:</label>
+                                    <select id="edit-class-trainer">
+                                        <option value="">Eğitmen Seçin</option>
+                                        <!-- JavaScript ile doldurulacak -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-class-capacity">Kapasite:</label>
+                                    <input type="number" id="edit-class-capacity" min="1" value="${cls.capacity}" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-class-date">Tarih:</label>
+                                    <input type="date" id="edit-class-date" value="${cls.date}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-class-time">Saat:</label>
+                                    <input type="time" id="edit-class-time" value="${cls.time}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-class-duration">Süre (dakika):</label>
+                                    <input type="number" id="edit-class-duration" min="15" step="15" value="${cls.duration}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-class-description">Açıklama:</label>
+                                <textarea id="edit-class-description" rows="3">${cls.description || ''}</textarea>
+                            </div>
+                            <button type="submit">Güncelle</button>
+                        </form>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Modal kapatma
+                const closeModal = () => {
+                    document.body.removeChild(modal);
+                };
+                
+                modal.querySelector('.close').addEventListener('click', closeModal);
+                
+                // Modal dışına tıklama
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+                
+                // Eğitmen seçicisini doldur
+                const trainerSelector = modal.querySelector('#edit-class-trainer');
+                const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                
+                // Sadece aktif eğitmenleri göster
+                const activeTrainers = trainers.filter(trainer => trainer.isActive);
+                
+                activeTrainers.forEach(trainer => {
+                    const option = document.createElement('option');
+                    option.value = trainer.id;
+                    option.textContent = trainer.name;
+                    option.selected = trainer.id === cls.trainerId;
+                    trainerSelector.appendChild(option);
+                });
+                
+                // Form gönderme
+                modal.querySelector('#edit-class-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const updatedClass = {
+                        ...cls,
+                        name: modal.querySelector('#edit-class-name').value,
+                        type: modal.querySelector('#edit-class-type').value,
+                        trainerId: modal.querySelector('#edit-class-trainer').value,
+                        capacity: parseInt(modal.querySelector('#edit-class-capacity').value),
+                        date: modal.querySelector('#edit-class-date').value,
+                        time: modal.querySelector('#edit-class-time').value,
+                        duration: parseInt(modal.querySelector('#edit-class-duration').value),
+                        description: modal.querySelector('#edit-class-description').value
+                    };
+                    
+                    updateClass(updatedClass);
+                    closeModal();
+                });
+            }
+            
+            // Dersi güncelle
+            function updateClass(updatedClass) {
+                const classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                const index = classes.findIndex(c => c.id === updatedClass.id);
+                
+                if (index !== -1) {
+                    classes[index] = updatedClass;
+                    localStorage.setItem(classStorageKey, JSON.stringify(classes));
+                    
+                    loadWeeklySchedule();
+                    loadClasses();
+                    showNotification('Ders başarıyla güncellendi', 'success');
+                }
+            }
+            
+            // Dersi sil
+            function deleteClass(classId) {
+                let classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                classes = classes.filter(cls => cls.id !== classId);
+                
+                localStorage.setItem(classStorageKey, JSON.stringify(classes));
+                
+                loadWeeklySchedule();
+                loadClasses();
+                showNotification('Ders başarıyla silindi', 'success');
+            }
+            
+            // Tüm dersleri listele
+            function loadClasses() {
+                const classesTable = document.querySelector('#classes-table tbody');
+                if (!classesTable) return;
+                
+                classesTable.innerHTML = '';
+                
+                const classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                
+                if (classes.length === 0) {
+                    classesTable.innerHTML = '<tr><td colspan="8" class="text-center">Kayıtlı ders bulunamadı</td></tr>';
+                    return;
+                }
+                
+                // Dersleri tarihe göre sırala
+                classes.sort((a, b) => new Date(a.date) - new Date(b.date));
+                
+                const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                
+                classes.forEach(cls => {
+                    const trainer = trainers.find(t => t.id === cls.trainerId);
+                    
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${cls.name}</td>
+                        <td><span class="class-type-label class-type-${cls.type}">${formatClassType(cls.type)}</span></td>
+                        <td>${trainer ? trainer.name : 'Eğitmen Yok'}</td>
+                        <td>${formatDate(cls.date)}</td>
+                        <td>${formatTime(cls.time)}</td>
+                        <td>${cls.duration} dk</td>
+                        <td>${cls.currentAttendees || 0}/${cls.capacity}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="edit-btn" data-id="${cls.id}">Düzenle</button>
+                                <button class="delete-btn" data-id="${cls.id}">Sil</button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    classesTable.appendChild(row);
+                });
+                
+                // Düzenleme butonlarına event listener ekle
+                document.querySelectorAll('#classes-table .edit-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        editClass(id);
+                    });
+                });
+                
+                // Silme butonlarına event listener ekle
+                document.querySelectorAll('#classes-table .delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        if (confirm('Bu dersi silmek istediğinize emin misiniz?')) {
+                            deleteClass(id);
+                        }
+                    });
+                });
+            }
+            
+            // Ders arama
+            const classSearch = document.getElementById('class-search');
+            if (classSearch) {
+                classSearch.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    const classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                    const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                    
+                    if (!searchTerm) {
+                        loadClasses();
+                        return;
+                    }
+                    
+                    const filteredClasses = classes.filter(cls => {
+                        const trainer = trainers.find(t => t.id === cls.trainerId);
+                        
+                        return (
+                            cls.name.toLowerCase().includes(searchTerm) ||
+                            (trainer && trainer.name.toLowerCase().includes(searchTerm)) ||
+                            formatClassType(cls.type).toLowerCase().includes(searchTerm)
+                        );
+                    });
+                    
+                    renderClassesTable(filteredClasses);
+                });
+            }
+            
+            // Filtrelenmiş dersleri tabloya ekle
+            function renderClassesTable(classes) {
+                const classesTable = document.querySelector('#classes-table tbody');
+                if (!classesTable) return;
+                
+                classesTable.innerHTML = '';
+                
+                if (classes.length === 0) {
+                    classesTable.innerHTML = '<tr><td colspan="8" class="text-center">Aranan kriterlere uygun ders bulunamadı</td></tr>';
+                    return;
+                }
+                
+                const trainers = JSON.parse(localStorage.getItem(trainerStorageKey) || '[]');
+                
+                classes.forEach(cls => {
+                    const trainer = trainers.find(t => t.id === cls.trainerId);
+                    
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${cls.name}</td>
+                        <td><span class="class-type-label class-type-${cls.type}">${formatClassType(cls.type)}</span></td>
+                        <td>${trainer ? trainer.name : 'Eğitmen Yok'}</td>
+                        <td>${formatDate(cls.date)}</td>
+                        <td>${formatTime(cls.time)}</td>
+                        <td>${cls.duration} dk</td>
+                        <td>${cls.currentAttendees || 0}/${cls.capacity}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="edit-btn" data-id="${cls.id}">Düzenle</button>
+                                <button class="delete-btn" data-id="${cls.id}">Sil</button>
+                            </div>
+                        </td>
+                    `;
+                    
+                    classesTable.appendChild(row);
+                });
+                
+                // Düzenleme butonlarına event listener ekle
+                document.querySelectorAll('#classes-table .edit-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        editClass(id);
+                    });
+                });
+                
+                // Silme butonlarına event listener ekle
+                document.querySelectorAll('#classes-table .delete-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        if (confirm('Bu dersi silmek istediğinize emin misiniz?')) {
+                            deleteClass(id);
+                        }
+                    });
+                });
+            }
+            
+            // Yeni ders ekleme formunu işle
+            const classForm = document.getElementById('add-class-form');
+            if (classForm) {
+                classForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const newClass = {
+                        id: 'class_' + Date.now().toString(36) + Math.random().toString(36).substring(2),
+                        name: document.getElementById('class-name').value,
+                        type: document.getElementById('class-type').value,
+                        trainerId: document.getElementById('class-trainer').value,
+                        capacity: parseInt(document.getElementById('class-capacity').value),
+                        date: document.getElementById('class-date').value,
+                        time: document.getElementById('class-time').value,
+                        duration: parseInt(document.getElementById('class-duration').value),
+                        description: document.getElementById('class-description').value,
+                        currentAttendees: 0,
+                        createdAt: new Date()
+                    };
+                    
+                    // LocalStorage'a kaydet
+                    const classes = JSON.parse(localStorage.getItem(classStorageKey) || '[]');
+                    classes.push(newClass);
+                    localStorage.setItem(classStorageKey, JSON.stringify(classes));
+                    
+                    // Formu temizle
+                    this.reset();
+                    
+                    // Bildirim göster
+                    showNotification('Ders başarıyla eklendi', 'success');
+                    
+                    // Programları güncelle
+                    loadWeeklySchedule();
+                    loadClasses();
+                });
+            }
+            
+            // Ders/Program Yönetimi modülünü başlat
+            function initClassModule() {
+                populateWeekSelector();
+                populateTrainerSelector();
+                handleClassTypeFilter();
+                loadWeeklySchedule();
+                loadClasses();
+            }
+            
+            // Program modülünü başlat
+            initClassModule();
+        });
+    </script>
+</body>
+</html> 
